@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dashboard</title>
+</head>
+<body>
+    <!-- 	
+item_id
+item_name
+item_cat
+item_price
+item_quantity
+item_picture -->
+    <h1>Hello admin yey</h1>
+    <a href="/additem" style=" padding:1rem; text-decoration: none; background-color:aqua; border-radius: 5px; color: green; display: block; width: 10%;" target="_blank"> Add Item</a>
+
+    <a href="/logout" style=" padding:1rem; text-decoration: none; margin-top: 2%; background-color:aqua; border-radius: 5px; color: green; display: block; width: 10%;" > Logout</a>
+    <table border="1px">
+        <thead>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Item Category</th>
+            <th>Item Price</th>
+            <th>Item Quantity</th>
+            <th>Item Picture</th>
+            <th>Option</th>
+        </thead>
+
+        <tbody>
+
+            <% for(var i =0; i<items.length;i++) { %>
+
+            <tr>
+                <td><%= items[i].item_id %></td>
+                <td><%= items[i].item_name %></td>
+                <td><%= items[i].item_cat %></td>
+                <td><%= items[i].item_price %></td>
+                <td><%= items[i].item_quantity %></td>
+                <td>
+                    <img src="<%= items[i].item_picture %>" alt="item image" width="20%">
+                </td>
+                <td>
+                    <a href="/update/<%= items[i].item_id %>" style=" padding:1rem; text-decoration: none; background-color:aqua; border-radius: 5px; color: green; display: block; width: 100%;" target="_blank"> Update Item</a>
+                    <form method="POST" action="/delete">
+                        <!-- <a href="/d" style=" padding:1rem; text-decoration: none; background-color:aqua; margin-top: 5%; border-radius: 5px; color: green; display: block; width: 100%;"> Delete Item</a> -->
+                        <input type="submit" style=" padding:1rem; text-decoration: none; background-color:aqua; margin-top: 5%; border-radius: 5px; color: green; display: block; width: 100%;" value="Delete">
+                        <input type="hidden" name="id" value="<%= items[i].item_id %>">
+
+                    </form>
+                    
+                </td>
+            </tr>
+            <% } %>
+
+        </tbody>
+
+    </table>
+</body>
+</html>
+<!-- <%= items[0].item_picture %> -->
